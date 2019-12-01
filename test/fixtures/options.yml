@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  question: one
+  option_type_id: 1
+  head_number: 1
+  selected: false
+
+two:
+  text: MyText
+  question: two
+  option_type_id: 1
+  head_number: 1
+  selected: false
