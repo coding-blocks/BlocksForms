@@ -1,0 +1,23 @@
+<%= render "shared/home/navbar" %>
+
+<div class="container">
+  <%= form_with url: '/forms', method: 'POST', remote: true, data: {'new-form' => true} do %>
+    <div class="form-group">
+      <%= label_tag "name", "Name" %>
+      <%= text_field_tag "name", nil, class: "form-control", placeholder: "Please enter the Name of the form" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag "description", "Description" %>
+      <%= text_area_tag "description", nil, class: "form-control", placeholder: "Please enter the Description of the form" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag "attempts_number", "Attempt Number" %>
+      <%= text_field_tag "attempts_number", "", class: "form-control", placeholder: "Please enter the Attempts Number of the form", min: 1, step: 1, value: 1 %>
+    </div>
+    <%= button_tag "Submit", class: "btn btn-primary btn-lg btn-block", id: "new-form-submit" do %>
+      Submit <i class="fas fa-arrow-right"></i>
+    <% end %>
+  <% end %>
+</div>
+
+

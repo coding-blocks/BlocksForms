@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 20191201184229) do
   end
 
   create_table "forms", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.boolean "finished"
-    t.boolean "active"
-    t.integer "attempts_number"
+    t.string "name", default: "", null: false
+    t.text "description", default: "", null: false
+    t.boolean "finished", default: false, null: false
+    t.boolean "active", default: true, null: false
+    t.integer "attempts_number", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

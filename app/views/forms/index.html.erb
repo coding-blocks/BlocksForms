@@ -1,0 +1,56 @@
+<%= render "shared/home/navbar" %>
+
+<div class="container">
+  <% flash.each do |key, value| %>
+    <% if key == 'success' %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% elsif key == 'error'%>
+      <% value.each do |entity, desc| %>
+        <div class="alert alert-danger"><%= entity %> <% desc.each do |d| %>
+            <span><%= d %></span>
+            <% unless d == desc.last %>
+              <span>, and</span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th class="th-sm">S.No
+      </th>
+      <th class="th-sm">Form Name
+      </th>
+      <th class="th-sm">Form Description
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @form.each do |f| %>
+      <tr>
+        <td><%= f.id %></td>
+        <td><%= f.name %></td>
+        <td><%= f.description %></td>
+      </tr>
+    <% end %>
+
+    </tbody>
+    <tfoot>
+    <tr>
+      <th>S.No
+      </th>
+      <th>Form Name
+      </th>
+      <th>Form Description
+      </th>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'forms' %>
+<% end %>
+
