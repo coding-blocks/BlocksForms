@@ -1,7 +1,7 @@
 <%= render "shared/home/navbar" %>
 
 <div class="container">
-  <%= form_with url: '/forms', method: 'POST', remote: true, data: {'new-form' => true} do %>
+  <%= form_with model: @form, action: '/forms', method: 'POST', remote: true, data: {'new-form' => true} do |form| %>
     <div class="form-group">
       <%= label_tag "name", "Name" %>
       <%= text_field_tag "name", nil, class: "form-control", placeholder: "Please enter the Name of the form" %>
@@ -19,5 +19,10 @@
     <% end %>
   <% end %>
 </div>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'forms' %>
+<% end %>
+
 
 

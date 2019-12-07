@@ -31,7 +31,7 @@
     <% @form.each do |f| %>
       <tr>
         <td><%= f.id %></td>
-        <td><%= f.name %></td>
+        <td> <%= link_to f.name, form_path(f) %> </td>
         <td><%= f.description %></td>
       </tr>
     <% end %>

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :forms
+  resources :sections
+  resources :questions
 end
