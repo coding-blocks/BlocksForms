@@ -1,4 +1,5 @@
 <%= semantic_form_for @section, action: '/sections', method: 'POST', remote: true do |section| %>
+  <%= section.hidden_field :form , value: @form %>
   <div class="form-group">
     <%= section.label "name", "Name" %>
     <%= section.text_field :name , class: "form-control", placeholder: "Please enter the Name of the section" %>
