@@ -13,6 +13,7 @@ Rails.application.config.assets.precompile = ['.js', '.css', '*.css.erb']
 Rails.application.config.assets.precompile += %w( application.css )
 Rails.application.config.assets.precompile += %w( application.js )
 Rails.application.config.assets.precompile += %w( forms.js )
+Rails.application.config.assets.precompile += %w( sections.js )
 # Precompile additional assets.
 # application.js, application.scss, and all non-JS/CSS in the app/assets
 # folder are already added.

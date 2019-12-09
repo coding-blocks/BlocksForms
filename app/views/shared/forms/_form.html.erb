@@ -1,0 +1,22 @@
+<div class="mt-4 card">
+  <h5 class="card-header"><%= locals[:section].name %></h5>
+  <div class="card-body">
+    <p class="card-text"><%= locals[:section].description %></p>
+  </div>
+  <div class="container">
+    <% locals[:section].questions.each do |question| %>
+      <div class="card border-secondary mb-3" style="max-width: 60rem;">
+        <div class="card">
+          <h5 class="card-header">
+            <%= question.text %>
+          </h5>
+          <div class="card-body">
+            <% unless question.description.nil? %>
+              <p class="card-text"><%= question.description %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
