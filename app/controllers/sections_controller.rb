@@ -2,6 +2,7 @@ class SectionsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def new
     @form = params[:form]
+    @question_type = QuestionsType.questions_types_title
     @section = Section.new
   end
 
@@ -22,7 +23,6 @@ class SectionsController < ApplicationController
                          error: {} }
         end
       end
-
     else
       flash[:error] = @section.errors.messages
       respond_to do |format|
@@ -35,7 +35,6 @@ class SectionsController < ApplicationController
                          error: @section.errors.messages }
         end
       end
-
     end
   end
 
@@ -46,7 +45,7 @@ class SectionsController < ApplicationController
   end
 
   def section_params
-    params.require(:section).permit(:name, :description, questions_attributes: [:id, :text, :description])
+    params.require(:section).permit(:name, :description, questions_attributes: [:id, :text, :description, :question_type_id, options_attributes: [:id, :text]])
   end
 
 end

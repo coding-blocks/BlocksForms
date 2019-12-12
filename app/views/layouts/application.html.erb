@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>CBForms</title>
     <%= csrf_meta_tags %>
@@ -11,5 +11,6 @@
 
   <body>
     <%= yield %>
+    <%= yield :end_js %>
   </body>
 </html>

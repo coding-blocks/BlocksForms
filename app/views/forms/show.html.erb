@@ -31,3 +31,17 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag 'sections' %>
 <% end %>
+
+<% content_for :end_js do %>
+  <script>
+      $(document).ready(function () {
+          $(document).on('change', '.question-type', function () {
+              let list = $(this)[0].parentElement.children[2].children[0].children[1].children;
+              let list_len = list.length;
+              for( let i = 0; i < list_len - 1; i++) {
+                  list[0].remove();
+              }
+          });
+      });
+  </script>
+<% end %>
