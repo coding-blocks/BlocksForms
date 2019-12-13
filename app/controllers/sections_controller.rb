@@ -4,6 +4,7 @@ class SectionsController < ApplicationController
     @form = params[:form]
     @question_type = QuestionsType.questions_types_title
     @section = Section.new
+
   end
 
   def create

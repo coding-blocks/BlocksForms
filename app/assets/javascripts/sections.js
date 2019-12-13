@@ -32,6 +32,7 @@ $(document).on('click', '#new-section-submit', function () {
 });
 $(document).on('ajax:success', '[data-new-section]', function (event) {
     [data, status, xhr] = event.detail;
+    console.log(data);
     let submitFormButton = $('#new-section-submit');
     submitFormButton.find('i')[0].className = 'fas fa-arrow-right';
     $(this).find(":submit").prop("disabled", false);
@@ -43,5 +44,8 @@ $(document).on('ajax:success', '[data-new-section]', function (event) {
         $(this)[0].parentElement.parentElement.remove();
     } else {
         toastr.error('OOPS!!! Something Went Wrong');
+        Object.keys(data.error).forEach(function (key) {
+            toastr.error(`${key} ${data.error[key]}`);
+        })
     }
 });
