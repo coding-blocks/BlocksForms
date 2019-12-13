@@ -1,5 +1,8 @@
-<div class="mt-4 card">
-  <h5 class="card-header">New Section</h5>
+<div class="mt-4 card nested-fields">
+  <h5 class="card-header">
+    New Section
+    <span style="float: right;"><%= button_tag 'Remove Section', class: 'btn btn-sm btn-danger remove-section' %></span>
+  </h5>
   <div class="card-body">
     <%= form_with model: @section, action: '/sections', method: 'POST', class: 'new-section', data: {'new-section' => true}, remote: true do |section| %>
       <%= section.hidden_field :form, value: @form %>

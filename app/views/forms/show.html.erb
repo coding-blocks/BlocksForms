@@ -42,6 +42,10 @@
                   list[0].remove();
               }
           });
+
+          $(document).on('click', '.remove-section', function() {
+              $(this)[0].parentElement.parentElement.parentElement.remove();
+          })
       });
   </script>
 <% end %>
