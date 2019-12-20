@@ -36,14 +36,20 @@
   <script>
       $(document).ready(function () {
           $(document).on('change', '.question-type', function () {
+              let selected = $(this).val();
+
               let list = $(this)[0].parentElement.children[2].children[0].children[1].children;
               let list_len = list.length;
-              for( let i = 0; i < list_len - 2; i++) {
+              for( let i = 0; i < list_len - 1; i++) {
                   list[0].remove();
               }
           });
           $(document).on('click', '.remove-section', function() {
               $(this)[0].parentElement.parentElement.parentElement.remove();
+          });
+
+          $(document).on('cocoon:after-insert', '.list-card', function() {
+              console.log($(this));
           });
       });
   </script>

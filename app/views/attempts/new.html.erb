@@ -1,0 +1,41 @@
+<%= render "shared/home/navbar" %>
+
+<div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4"><%= @form.name %></h1>
+      <p class="lead"><%= @form.description %></p>
+      <hr class="my-4">
+    </div>
+
+  <div class="section-display">
+    <%= form_for(@attempt, url: "/forms/#{@form.id}/attempt", remote: true, method: 'POST') do |f| %>
+      <%= f.fields_for :answers do |builder| %>
+          <% @form.sections.each do |section| %>
+            <div class="card">
+              <div class="card-header">
+                <span><%= "#{section.head_number} : " if section.head_number %></span><%= section.name%>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= section.description if section.description %></h5>
+                <% section.questions.each do |question| %>
+                  <div class="card">
+                    <div class="card-header">
+                      <span><%= "#{question.head_number} : " if question.head_number %></span><%= question.text %>
+                    </div>
+                    <div class="card-body">
+                      <div class="card-title">
+                        <%= question.description if question.description %>
+                        <% question.options.each do |option| %>
+                          <p><%= option.text %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
