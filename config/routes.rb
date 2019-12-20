@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :forms
   resources :sections
   resources :questions
+
+  get 'forms/:id/attempt' => 'attempts#new'
+  post 'forms/:id/attempt' => 'attempts#create'
 end
