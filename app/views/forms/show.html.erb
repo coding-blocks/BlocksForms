@@ -34,10 +34,16 @@
 
 <% content_for :end_js do %>
   <script>
-      $(document).ready(function () {
-          $(document).on('click', '.remove-section', function() {
-              $(this)[0].parentElement.parentElement.parentElement.remove();
-          });
-      });
+      // $(document).ready(function () {
+      //     $(document).on('click', '.remove-section', function() {
+      //         $(this)[0].parentElement.parentElement.parentElement.remove();
+      //     });
+      //
+      //     $(document).on('change', '.question-type', function () {
+      //         let selectTag = $(this)[0];
+      //         console.log(selectTag.value);
+      //         $(selectTag.parentElement).siblings('.add-option-container').find('.add-option').attr('href', `/section/question/${selectTag.value}`);
+      //     })
+      // });
   </script>
 <% end %>

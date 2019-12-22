@@ -18,6 +18,17 @@
           <%= f.label "question_type_id", "Question Type" %>
           <%= f.select :question_type_id, @question_type, {}, :class => 'form-control question-type' %>
         </div>
+        <div class="form-group add-option-container">
+          <%= button_tag "Add Option", data: "1", class: "btn btn-secondary add-option", onclick: "return false;", remote: true %>
+        </div>
+        <div class="card mb-3">
+          <div class="card-header">
+            Options
+          </div>
+          <div class="card-body">
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
