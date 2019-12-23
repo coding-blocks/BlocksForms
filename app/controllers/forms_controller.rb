@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_action :set_form, only: [:show, :destroy]
+  before_action :set_form, only: [:show, :destroy, :edit, :update]
   protect_from_forgery unless: -> { request.format.json? }
   def index
     @form = Form.all
@@ -10,6 +10,9 @@ class FormsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
   end
 
   def create
@@ -28,6 +31,30 @@ class FormsController < ApplicationController
                      statusMessage: 'Unable to create New Form',
                      disabled: false,
                      error: @form.errors.messages }
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @form.update(form_params)
+        format.json do
+          render json: { data: {},
+                        statusCode: 200,
+                        statusMessage: 'Successfully updated the form',
+                        disabled: false,
+                        error: {}}
+        end
+        format.html { redirect_to forms_path, notice: 'Form was successfully updated'}
+      else
+        format.json do
+          render json: { data: {},
+                        statusCode: 200,
+                        statusMessage: 'Not able to update the form',
+                        disabled: false,
+                        error: {}}
+        end
+        format.html { redirect_to forms_path, notice: 'Form was not updated'}
+      end
     end
   end
 
@@ -53,7 +80,7 @@ class FormsController < ApplicationController
   end
 
   def form_params
-    params.permit(:name, :description, :attempts_number)
+    params.require(:form).permit(:name, :description, :attempts_number)
   end
 
 end
