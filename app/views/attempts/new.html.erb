@@ -19,14 +19,57 @@
                 <h5 class="card-title"><%= section.description if section.description %></h5>
                 <% section.questions.each do |question| %>
                   <div class="card">
-                    <div class="card-header">
+                    <h5 class="card-header">
                       <span><%= "#{question.head_number} : " if question.head_number %></span><%= question.text %>
-                    </div>
+                    </h5>
                     <div class="card-body">
                       <div class="card-title">
-                        <%= question.description if question.description %>
-                        <% question.options.each do |option| %>
-                          <p><%= option.text %></p>
+                        <h5><%= question.description if question.description %></h5>
+                        <% if question.question_type_id == 2 %>
+                          <% question.options.each do |option| %>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio">&nbsp;<%= option %></label>
+                            </div>
+                          <% end %>
+                        <% elsif question.question_type_id == 1%>
+                          <% question.options.each do |option| %>
+                            <div class="checkbox">
+                              <label><input type="checkbox" value="">&nbsp;<%= option %></label>
+                            </div>
+                          <% end %>
+                        <% elsif question.question_type_id == 3%>
+                          <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Enter the value">
+                          </div>
+                        <% elsif question.question_type_id == 4%>
+                          <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter your response">
+                          </div>
+                        <% elsif question.question_type_id == 5%>
+                          <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Enter your response"></textarea>
+                          </div>
+                        <% elsif question.question_type_id == 6%>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                          </div>
+                        <% elsif question.question_type_id == 7%>
+                          <label for="customRange">Custom range</label>
+                          <input type="range" class="custom-range" id="customRange" name="points1">
+                        <% elsif question.question_type_id == 8%>
+                          <label for="customRange">Custom range</label>
+                          <input type="range" class="custom-range" id="customRange" name="points1">
+                        <% elsif question.question_type_id == 9%>
+                        <% elsif question.question_type_id == 10%>
+                        <% elsif question.question_type_id == 11%>
+                          <select name="cars" class="custom-select">
+                            <% question.options.each do |option| %>
+                              <option><%= option %></option>
+                            <% end %>
+                          </select>
+                        <% elsif question.question_type_id == 12%>
+                        <% elsif question.question_type_id == 13%>
                         <% end %>
                       </div>
                     </div>

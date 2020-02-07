@@ -8,7 +8,6 @@ class SectionsController < ApplicationController
   end
 
   def create
-    byebug
     @section = Section.create(section_params)
     if Form.exists?(id: params[:section][:form])
       @section.form_id = params[:section][:form]
